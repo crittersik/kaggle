@@ -1,0 +1,17 @@
+## data files
+_data
+
+## Python
+*.pyc
+.ipynb_checkpoints
+
+## Emacs mess
+*~
+\#*\#
+.\#*
+TAGS
+*flymake*
+
+## pycharm cruft
+.idea/*
+pycharm_env_copy/*
