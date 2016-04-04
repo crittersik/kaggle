@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+from lib.process_iris import process_iris
+
+
 class Perceptron(object):
     def __init__(self, eta=0.01, n_iterations=10):
         self.eta = eta
@@ -28,32 +31,8 @@ class Perceptron(object):
         return np.where(self.net_input(X) >= 0.0, 1, -1)
 
 
-def process_iris(df):
-    """
-    Follow Machine Learning in Python book.
-    Take only 100 first rows with 50 Iris-Setosa and 50 Iris-Versicolor
-    data. Run Perceptron on the dataset.
-    """
-    y = df.iloc[0:100, 4].values
-    y = np.where(y == 'Iris-setosa', -1, 1)
-
-    X = df.iloc[0:100, [0,2]].values
-    p1 = plt.figure(1)
-    plt.scatter(
-        X[0:50, 0],
-        X[0:50, 1],
-        color='red',
-        marker='o',
-        label='setosa',
-    )
-    plt.scatter(
-        X[50:100, 0],
-        X[50:100, 1],
-        color='blue',
-        marker='x',
-        label='versicolor',
-    )
-    p1.show()
+def test_perceptron(df):
+    (X, y) = process_iris(df)
 
     perceptron = Perceptron(eta=0.1, n_iterations=10)
     perceptron.fit(X,y)
